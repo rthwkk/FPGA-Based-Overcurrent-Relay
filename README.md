@@ -3,7 +3,7 @@
 **Design and Implementation of an Overcurrent Relay on FPGA (Xilinx Artix-7)**  
 
 This project demonstrates the design and FPGA implementation of a **digital overcurrent relay** using **Verilog HDL** on the **XC7A100T Artix-7** FPGA.  
-It is based on the academic work by **Sanjay R Senan, Rithwik D, Rinoofa Sherin MM** from **NIT Calicut**.  
+It is based on the academic work by **Rithwik D, Sanjay R Senan and Rinoofa Sherin MM** from **NIT Calicut**.  
 The original report can be found in the [`/doc`](./doc) folder.  
 
 ---
@@ -132,8 +132,9 @@ Simulation waveforms are available in the [`/sim_waveforms`](./sim_waveforms) fo
 ## 📄 Authors  
 
 **Authors:**  
+- Rithwik D
 - Sanjay R Senan  
-- Rithwik D   
+- Rinoofa Sherin MM
 
 **Institution:**  
 National Institute of Technology Calicut (NIT Calicut)
