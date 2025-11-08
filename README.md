@@ -42,3 +42,20 @@ The original report can be found in the [`/doc`](./doc) folder.
         └────────────┘       └────────────────┘       └────────────┘
 
 
+---
+
+```text
+## 📂 Repository Structure
+
+```text
+FPGA-Based-Overcurrent-Relay/
+│
+├── /hdl/             # Synthesizable Verilog source files (MAF, RMS, REM, Top-Level)
+├── /tb/              # Testbench files (final_relay_tb.v)
+├── /constrs/         # Xilinx Design Constraints (.xdc)
+├── /doc/             # Project report, documentation, and flowchart
+├── /sim_waveforms/   # Simulation result screenshots
+└── README.md         # This file
+
+
+
