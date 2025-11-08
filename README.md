@@ -32,6 +32,7 @@ The original report can be found in the [`/doc`](./doc) folder.
 - Implements **Instantaneous Overcurrent Relay (OCR)** logic *(or IDMT — specify if applicable)*  
 - Generates a **latching trip signal** when the RMS current exceeds the threshold  
 
+---
 
 ```text
 ## 📘 Module Flow Diagram
