@@ -34,7 +34,7 @@ The original report can be found in the [`/doc`](./doc) folder.
 
 ---
 
-```text
+
 ## 📘 Module Flow Diagram
 
         ┌────────────┐       ┌────────────────┐       ┌────────────┐
@@ -45,17 +45,112 @@ The original report can be found in the [`/doc`](./doc) folder.
 
 ---
 
+## 📁 Repository Structure
 ```text
-📁 Repository Structure
 
 FPGA-Based-Overcurrent-Relay/
 │
-├── /hdl/      # Synthesizable Verilog source files (MAF, RMS, REM, Top-Level)
-├── /tb/      # Testbench files (final_relay_tb.v)
-├── /constrs/    # Xilinx Design Constraints (.xdc)
-├── /doc/     # Project report, documentation, and flowchart
-├── /sim_waveforms/ # Simulation result screenshots
-└── README.md   # This file
+├── /hdl/              # Synthesizable Verilog source files (MAF, RMS, REM, Top-Level)
+├── /tb/               # Testbench files (final_relay_tb.v)
+├── /constrs/          # Xilinx Design Constraints (.xdc)
+├── /doc/              # Project report, documentation, and flowchart
+├── /sim_waveforms/    # Simulation result screenshots
+└── README.md          # This file
+
+```
+
+---
+
+## 🧠 How to Run the Project  
+
+### 1. Create a New Vivado Project  
+- Open **Xilinx Vivado**.  
+- Create a new **RTL Project**.  
+- Target device: **XC7A100TCSG323-3** (Artix-7).  
+
+### 2. Add Sources  
+- Add all files from `/hdl` → *Design Sources*  
+- Add all files from `/tb` → *Simulation Sources*  
+- Add constraint file from `/constrs` → *Constraints*
+
+### 3. Generate CORDIC IP Core  
+1. Open **IP Catalog**.  
+2. Search for **CORDIC**.  
+3. Configure as follows:  
+   - Function: **Square Root**  
+   - Input Width: **32 bits**  
+   - Output Width: **16 bits**  
+4. Generate the IP and ensure the **component name matches** the one instantiated in `rms_estimation_module.v` (e.g., `rms_cordic_sqroot`).
+
+### 4. Run Simulation  
+- Open **Behavioral Simulation**.  
+- The testbench `final_relay_tb.v` automatically executes.  
+
+### 5. Run Implementation  
+- Click **Run Implementation** to synthesize, place, and route the design.  
+
+### 6. Generate Bitstream  
+- Click **Generate Bitstream** to create the final programming file for your FPGA.  
+
+---
+
+## 🧩 Simulation Results  
+
+### ✅ 1. Normal Operation  
+- Input: Sine wave with **peak = 2000**  
+- Measured: `Irms ≈ 1414`  
+- Since `1414 < 2000`, **trip signal = 0**
+
+### ⚠️ 2. Fault Condition (Trip)  
+- Input: Sine wave with **peak = 4000**  
+- Measured: `Irms ≈ 2828`  
+- Since `2828 > 2000`, **trip signal latches to 1**
+
+---
+
+## 🧪 Verification  
+
+The testbench verifies:  
+- End-to-end signal flow through the **Filter → RMS → Protection** pipeline.  
+- Threshold-based **trip signal generation** and **latching behavior**.  
+
+Simulation waveforms are available in the [`/sim_waveforms`](./sim_waveforms) folder.
+
+---
+
+## 🛠️ Tools & Technologies  
+
+| Tool / Resource | Description |
+|-----------------|--------------|
+| **Xilinx Vivado** | Design, Simulation & Bitstream Generation |
+| **Verilog HDL** | Hardware Description Language |
+| **Artix-7 (XC7A100T)** | Target FPGA |
+| **CORDIC IP Core** | Hardware-Accelerated Math Core |
+
+---
+
+## 📄 Authors  
+
+**Authors:**  
+- Sanjay R Senan  
+- Rithwik D   
+
+**Institution:**  
+National Institute of Technology Calicut (NIT Calicut)
+
+---
+
+## 🧷 License  
+
+This project is released under the **MIT License**.  
+See the [LICENSE](./LICENSE) file for details.
+
+---
+
+## 🌟 Acknowledgements  
+
+Special thanks to the **Department of Electrical Engineering, NIT Calicut** for academic guidance and FPGA lab resources.
+
 
 
 
