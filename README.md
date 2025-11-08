@@ -12,3 +12,27 @@ The original report can be found in the [`/doc`](./doc) folder.
 
 - **Pipelined Architecture**  
   Three-stage pipeline for high-speed operation:  
+
+- **Efficient Filtering**  
+- Implements a **4-sample Moving Average Filter (MAF)**  
+- Uses only **bit-shifting and addition** for low resource usage  
+- Reduces harmonic distortions effectively  
+
+- **Accurate RMS Measurement**  
+- Uses a **16-sample moving window** to compute the RMS value  
+- Employs **CORDIC IP Core** for hardware-accelerated square root computation  
+
+- **CORDIC IP Core Integration**  
+- Function: *Square Root*  
+- Input Width: 32 bits  
+- Output Width: 16 bits  
+- Implemented using Xilinx CORDIC IP  
+
+- **Protection Logic**  
+- Implements **Instantaneous Overcurrent Relay (OCR)** logic *(or IDMT — specify if applicable)*  
+- Generates a **latching trip signal** when the RMS current exceeds the threshold  
+
+---
+
+## 📘 Module Flow Diagram  
+
